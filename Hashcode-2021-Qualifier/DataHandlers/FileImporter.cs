@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 
 namespace Hashcode_2021_Qualifier
 {
@@ -45,7 +46,13 @@ namespace Hashcode_2021_Qualifier
                     var streetData = data[i].Split(" ");
 
                     street.Start = simData.Intersections[Int32.Parse(streetData[0])];
+                    
+                    simData.Intersections[Int32.Parse(streetData[0])].Streets.Add(street);
+                    
                     street.End = simData.Intersections[Int32.Parse(streetData[1])];
+                    
+                    simData.Intersections[Int32.Parse(streetData[1])].Streets.Add(street);
+
                     street.streetName = streetData[2];
                     street.Length = Int32.Parse(streetData[3]);
 
@@ -53,16 +60,37 @@ namespace Hashcode_2021_Qualifier
                 else
                 {
                     var car = new Car();
-                    
-                    var pathLength = Int32
-                    
-                    
-                    
 
+                    var carData = data[i].Split(" ");
+
+                    var pathLength = Int32.Parse(carData[0]);
+
+                    car.Path = new Street[pathLength];
+
+                    bool hasFoundPath = false;
+                    
+                    for (int j = 1; j <= pathLength; j++)
+                    {
+                        foreach (var intersection in simData.Intersections)
+                        {
+                            foreach (var street in intersection.Streets)
+                            {
+                                if (street.streetName == carData[j - 1])
+                                {
+                                    car.Path[j - 1] = street;
+                                    hasFoundPath = true;
+                                    break;
+                                }
+                            }
+
+                            if (hasFoundPath == true)
+                            {
+                                break;
+                            }
+                        }
+
+                    }
                 }
-                
-                
-                
             }
 
             return simData;

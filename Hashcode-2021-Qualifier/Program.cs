@@ -15,7 +15,7 @@ namespace Hashcode_2021_Qualifier
             
             var answer = problemSolver.solve(data);
             
-            DataExporter.exportSolution(answer);
+            //DataExporter.exportSolution(answer);
 
         }
     }

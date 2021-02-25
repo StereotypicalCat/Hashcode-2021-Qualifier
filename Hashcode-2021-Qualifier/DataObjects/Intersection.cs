@@ -4,16 +4,16 @@ namespace Hashcode_2021_Qualifier
 {
     public class Intersection
     {
-        public Street[] Streets { get; set; }
+        public List<Street> Streets { get; set; }
 
-        public int[] schedul;
+        public int[] schedule;
 
 
         public Intersection(Street[] streets)
         {
             Streets = streets;
 
-            schedul = new int[streets.Length];
+            schedule = new int[streets.Length];
         }
     }
 }
