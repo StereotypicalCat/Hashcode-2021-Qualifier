@@ -1,5 +1,7 @@
 ﻿using System.Linq;
+using System.Net.Security;
 using Hashcode_2021_Qualifier.DataObjects;
+using Hashcode_2021_Qualifier.HelperClasses;
 
 namespace Hashcode_2021_Qualifier
 {
@@ -7,6 +9,8 @@ namespace Hashcode_2021_Qualifier
     {
         public Schedule solve(SimulationData input)
         {
+           input = TrafficLightRemover.removeLight(input);
+
             Schedule returnSchedule = new Schedule();
 
             returnSchedule.intersections = input.Intersections.ToList();
