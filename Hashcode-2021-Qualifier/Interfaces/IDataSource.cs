@@ -2,6 +2,6 @@
 {
     public interface IDataSource
     {
-        SimulationData GetData();
+        SimulationData GetData(string inputName);
     }
 }

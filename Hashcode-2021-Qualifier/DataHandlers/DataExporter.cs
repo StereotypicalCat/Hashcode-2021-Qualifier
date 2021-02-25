@@ -7,11 +7,11 @@ namespace Hashcode_2021_Qualifier
 {
     public class DataExporter
     {
-        public static void exportSolution(Schedule solution)
+        public static void exportSolution(Schedule solution, string outputName)
         {
             List<String> answerLines = formatOutput(solution);
             
-            var outputPath = Directory.GetCurrentDirectory() + "\\answer.txt";
+            var outputPath = Directory.GetCurrentDirectory() + "\\" + outputName + ".txt";
             
             Console.WriteLine("writing file to...:");
             Console.WriteLine(outputPath);

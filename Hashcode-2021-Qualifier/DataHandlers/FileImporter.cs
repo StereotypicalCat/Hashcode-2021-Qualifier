@@ -7,9 +7,12 @@ namespace Hashcode_2021_Qualifier
 {
     public class FileImporter : IDataSource
     {
-        public SimulationData GetData()
+
+        private Dictionary<String, Street> streetNameLookup;
+        
+        public SimulationData GetData(String inputName)
         {
-            var inputpath = Directory.GetCurrentDirectory() + "\\input.txt";
+            var inputpath = Directory.GetCurrentDirectory() + "\\" + inputName + ".txt";
             
             string[] lines = System.IO.File.ReadAllLines(inputpath);
 
@@ -21,6 +24,8 @@ namespace Hashcode_2021_Qualifier
 
         private SimulationData formatData(string[] data)
         {
+            streetNameLookup = new Dictionary<string, Street>();
+            
             var simData = new SimulationData();
             
             var metadata = data[0].Split(' ');
@@ -36,9 +41,12 @@ namespace Hashcode_2021_Qualifier
             for (int i = 0; i < Int32.Parse(metadata[1]); i++)
             {
                 simData.Intersections[i] = new Intersection();
+                simData.Intersections[i].ID = i;
             }
 
             simData.Cars = new Car[noOfCars];
+
+            Console.WriteLine("Importing Streets...");
             
             for (int i = 1; i < data.Length; i++)
             {
@@ -59,6 +67,13 @@ namespace Hashcode_2021_Qualifier
                     street.streetName = streetData[2];
                     street.Length = Int32.Parse(streetData[3]);
 
+                    streetNameLookup.Add(street.streetName, street);
+                    
+                    if (i == noOfStreets)
+                    {
+                        Console.WriteLine("Cars...");
+                    }
+                    
                 }
                 else
                 {
@@ -69,29 +84,10 @@ namespace Hashcode_2021_Qualifier
                     var pathLength = Int32.Parse(carData[0]);
 
                     car.Path = new Street[pathLength];
-                    
+
                     for (int j = 0; j < pathLength; j++)
                     {
-                        bool hasFoundPath = false;
-
-                        foreach (var intersection in simData.Intersections)
-                        {
-                            foreach (var street in intersection.Streets)
-                            {
-                                if (street.streetName == carData[j+1])
-                                {
-                                    car.Path[j] = street;
-                                    hasFoundPath = true;
-                                    break;
-                                }
-                            }
-
-                            if (hasFoundPath == true)
-                            {
-                                break;
-                            }
-                        }
-
+                        car.Path[j] = streetNameLookup[carData[j + 1]];
                     }
 
                     simData.Cars[i - 1 - noOfStreets] = car;
