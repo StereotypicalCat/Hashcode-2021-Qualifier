@@ -44,7 +44,7 @@ namespace Hashcode_2021_Qualifier
                 for (int i = 0; i < IncludedIntersections.Count; i++)
                 {
                     int streetIndex = IncludedIntersections[i];
-                    answerLines.Add("" + inter.Streets[streetIndex].streetName + inter.schedule[streetIndex]);
+                    answerLines.Add("" + inter.Streets[streetIndex].streetName + " " + inter.schedule[streetIndex]);
                 }
             }
             return answerLines;
