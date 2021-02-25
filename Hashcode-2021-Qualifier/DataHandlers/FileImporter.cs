@@ -35,7 +35,7 @@ namespace Hashcode_2021_Qualifier
             simData.Intersections = new Intersection[Int32.Parse(metadata[1])];
             for (int i = 0; i < Int32.Parse(metadata[1]); i++)
             {
-                simData.Intersections[i] = new Intersection(new List<Street>());
+                simData.Intersections[i] = new Intersection();
             }
 
             simData.Cars = new Car[noOfCars];
@@ -99,6 +99,11 @@ namespace Hashcode_2021_Qualifier
                 }
             }
 
+            foreach (var intersection in simData.Intersections)
+            {
+                intersection.initializeSchedule(intersection.Streets.Count);
+            }
+            
             return simData;
         }
     }

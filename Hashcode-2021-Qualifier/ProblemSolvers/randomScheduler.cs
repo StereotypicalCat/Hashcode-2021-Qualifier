@@ -11,7 +11,6 @@ namespace Hashcode_2021_Qualifier
 
             returnSchedule.intersections = input.Intersections.ToList();
 
-
             foreach (var intersection in returnSchedule.intersections)
             {
                 for (int i = 0; i < intersection.schedule.Length; i++)
