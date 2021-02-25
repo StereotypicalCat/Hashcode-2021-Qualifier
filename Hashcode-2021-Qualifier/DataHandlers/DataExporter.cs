@@ -28,10 +28,23 @@ namespace Hashcode_2021_Qualifier
             foreach (var inter in solution.intersections)
             {
                 answerLines.Add("" + inter.ID);
-                answerLines.Add("" + inter.Streets.Count);
-                foreach (var street in inter.Streets)
+
+
+                List<int> IncludedIntersections = new List<int>();
+
+                for (int i = 0; i < inter.schedule.Length; i++)
                 {
-                    answerLines.Add("" + street.streetName + " 1");
+                    if (inter.schedule[i] > 0)
+                    {
+                        IncludedIntersections.Add(i);
+                    }
+                }
+
+                answerLines.Add("" + IncludedIntersections.Count);
+                for (int i = 0; i < IncludedIntersections.Count; i++)
+                {
+                    int streetIndex = IncludedIntersections[i];
+                    answerLines.Add("" + inter.Streets[streetIndex].streetName + inter.schedule[streetIndex]);
                 }
             }
 
