@@ -47,8 +47,6 @@ namespace Hashcode_2021_Qualifier
                     answerLines.Add("" + inter.Streets[streetIndex].streetName + inter.schedule[streetIndex]);
                 }
             }
-
-
             return answerLines;
         }
         
