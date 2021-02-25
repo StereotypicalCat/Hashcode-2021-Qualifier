@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using Hashcode_2021_Qualifier.DataObjects;
 
 namespace Hashcode_2021_Qualifier
 {
     public class DataExporter
     {
-        public static void exportSolution(int solution)
+        public static void exportSolution(Schedule solution)
         {
             List<String> answerLines = formatOutput(solution);
             
@@ -18,11 +19,18 @@ namespace Hashcode_2021_Qualifier
             File.WriteAllLines(outputPath, answerLines);
         }
 
-        public static List<String> formatOutput(int solution)
+        public static List<String> formatOutput(Schedule solution)
         {
-            // magic
+            List<string> answerLines = new List<string>();
 
-            return new List<string>();
+            answerLines.Add("" + solution.intersections.Count);
+
+            answerLines.Add("" + solution.intersections.Count);
+
+
+
+
+            return answerLines;
         }
         
     }
