@@ -1,4 +1,5 @@
 ﻿using System;
+using Hashcode_2021_Qualifier.DataObjects;
 
 namespace Hashcode_2021_Qualifier
 {
@@ -13,7 +14,8 @@ namespace Hashcode_2021_Qualifier
 
             var data = dataGetter.GetData();
             
-            var answer = problemSolver.solve(data);
+            
+            Schedule answer = problemSolver.solve(data);
             
             //DataExporter.exportSolution(answer);
 
