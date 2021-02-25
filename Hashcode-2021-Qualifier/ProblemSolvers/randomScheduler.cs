@@ -15,7 +15,7 @@ namespace Hashcode_2021_Qualifier
             {
                 for (int i = 0; i < intersection.schedule.Length; i++)
                 {
-                    if (intersection.Streets[i].Start == intersection)
+                    if (intersection.Streets[i].Start == intersection && intersection.enabled)
                     {
                         intersection.schedule[i]++;
                     }
