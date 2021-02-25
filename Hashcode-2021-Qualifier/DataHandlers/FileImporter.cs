@@ -4,7 +4,7 @@ namespace Hashcode_2021_Qualifier
 {
     public class FileImporter : IDataSource
     {
-        public int GetData()
+        public SimulationData GetData()
         {
             var inputpath = Directory.GetCurrentDirectory() + "\\input.txt";
             
@@ -12,7 +12,7 @@ namespace Hashcode_2021_Qualifier
 
             var formatted = formatData(lines);
 
-            return formatted;
+            return new SimulationData();
 
         }
 

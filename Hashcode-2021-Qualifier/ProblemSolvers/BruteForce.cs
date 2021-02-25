@@ -2,7 +2,7 @@
 {
     public class BruteForce : IProblemSolver
     {
-        public int solve(int input)
+        public int solve(SimulationData input)
         {
             return 1;
         }

@@ -2,11 +2,10 @@
 {
     public class MockData : IDataSource
     {
-        public int GetData()
+        public SimulationData GetData()
         {
-            // Return mock data
 
-            return 1;
+            return new SimulationData();
         }
     }
 }

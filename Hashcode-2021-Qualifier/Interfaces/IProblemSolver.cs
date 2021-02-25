@@ -2,6 +2,6 @@
 {
     public interface IProblemSolver
     {
-        public int solve(int input);
+        public int solve(SimulationData input);
     }
 }
