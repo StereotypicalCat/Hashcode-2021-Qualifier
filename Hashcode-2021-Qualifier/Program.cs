@@ -1,5 +1,6 @@
 ﻿using System;
 using Hashcode_2021_Qualifier.DataObjects;
+using Hashcode_2021_Qualifier.HelperClasses;
 
 namespace Hashcode_2021_Qualifier
 {
