@@ -1,18 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Hashcode_2021_Qualifier.DataObjects;
+using Hashcode_2021_Qualifier.HelperClasses;
 
 namespace Hashcode_2021_Qualifier
 {
     public class noOfCars : IProblemSolver
     {
-        
-        
-        
-        public Schedule solve(SimulationData input)
+        public Schedule solve(SimulationData unfixedInput)
         {
-
-            var scalar = 4f;
+            var input = TrafficLightRemover.removeLight(unfixedInput);
+            
+            var scalar = 3f;
 
             var solution = new Schedule();
 
@@ -53,13 +53,17 @@ namespace Hashcode_2021_Qualifier
                 for (int i = 0; i < intersection.schedule.Length; i++) {
                     var street = intersection.Streets[i];
 
+                    if (!street.enabled)
+                    {
+                        continue;
+                    }
+                    
                     if (street.End == intersection)
                     {
-                                            
                         var val = 0;
                         streets.TryGetValue(street, out val);
 
-                        int time = (int) ((((float) val) / sum) * scalar);
+                        int time = (int) Math.Ceiling(((((float) val) / sum) * scalar));
                         intersection.schedule[i] = time;
                     }
                 }

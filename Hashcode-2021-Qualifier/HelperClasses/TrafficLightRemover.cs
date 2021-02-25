@@ -11,9 +11,6 @@ namespace Hashcode_2021_Qualifier.HelperClasses
     {
         public static SimulationData removeLight(SimulationData oldData)
         {
-            SimulationData data = new SimulationData();
-
-
             List<Street> newStreets = oldData.Intersections.SelectMany(x => x.Streets).ToList();
 
 
