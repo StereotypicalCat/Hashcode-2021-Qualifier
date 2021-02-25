@@ -17,7 +17,7 @@ namespace Hashcode_2021_Qualifier
             
             Schedule answer = problemSolver.solve(data);
             
-            DataExporter.exportSolution(answer);
+            //DataExporter.exportSolution(answer);
 
         }
     }
