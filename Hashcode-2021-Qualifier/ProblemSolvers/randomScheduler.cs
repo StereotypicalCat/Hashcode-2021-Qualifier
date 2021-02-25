@@ -14,9 +14,9 @@ namespace Hashcode_2021_Qualifier
 
             foreach (var intersection in returnSchedule.intersections)
             {
-                for (int i = 0; i < intersection.schedul.Length; i++)
+                for (int i = 0; i < intersection.schedule.Length; i++)
                 {
-                    intersection.schedul[i]++;
+                    intersection.schedule[i]++;
                 }
             }
 

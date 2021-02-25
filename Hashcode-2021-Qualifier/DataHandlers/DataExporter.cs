@@ -25,7 +25,20 @@ namespace Hashcode_2021_Qualifier
 
             answerLines.Add("" + solution.intersections.Count);
 
-            answerLines.Add("" + solution.intersections.Count);
+            foreach (var inter in solution.intersections)
+            {
+                answerLines.Add("" + inter.ID);
+                answerLines.Add("" + inter.Streets.Length);
+                foreach (var street in inter.Streets)
+                {
+                    answerLines.Add("" + street.);
+                }
+
+
+
+            }
+
+
 
 
 
