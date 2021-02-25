@@ -28,19 +28,12 @@ namespace Hashcode_2021_Qualifier
             foreach (var inter in solution.intersections)
             {
                 answerLines.Add("" + inter.ID);
-                answerLines.Add("" + inter.Streets.Length);
+                answerLines.Add("" + inter.Streets.Count);
                 foreach (var street in inter.Streets)
                 {
-                    answerLines.Add("" + street.);
+                    answerLines.Add("" + street.streetName + " 1");
                 }
-
-
-
             }
-
-
-
-
 
 
             return answerLines;
