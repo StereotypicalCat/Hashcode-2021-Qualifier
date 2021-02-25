@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace Hashcode_2021_Qualifier
 {
@@ -12,13 +13,59 @@ namespace Hashcode_2021_Qualifier
 
             var formatted = formatData(lines);
 
-            return new SimulationData();
+            return formatted;
 
         }
 
-        private int formatData(string[] data)
+        private SimulationData formatData(string[] data)
         {
-            return 1;
+            var simData = new SimulationData();
+            
+            var metadata = data[0].Split(' ');
+
+            simData.simulationLength = Int32.Parse(metadata[1]);
+            var noOfIntersections = Int32.Parse(metadata[2]);
+            var noOfCars = Int32.Parse(metadata[3]);
+            var pointsOnTime = Int32.Parse(metadata[4]);
+
+            simData.scoreOnTime =  pointsOnTime;
+
+            simData.Intersections = new Intersection[noOfIntersections];
+            for (int i = 0; i < noOfIntersections; i++)
+            {
+                simData.Intersections[i] = new Intersection();
+            }
+            
+            for (int i = 1; i < data.Length; i++)
+            {
+                if (i <= (noOfIntersections + 1))
+                {
+                    var street = new Street();
+
+                    var streetData = data[i].Split(" ");
+
+                    street.Start = simData.Intersections[Int32.Parse(streetData[0])];
+                    street.End = simData.Intersections[Int32.Parse(streetData[1])];
+                    street.streetName = streetData[2];
+                    street.Length = Int32.Parse(streetData[3]);
+
+                }
+                else
+                {
+                    var car = new Car();
+                    
+                    var pathLength = Int32
+                    
+                    
+                    
+
+                }
+                
+                
+                
+            }
+
+            return simData;
         }
     }
 }

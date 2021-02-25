@@ -3,6 +3,7 @@
     public class SimulationData
     {
         public int simulationLength;
+        public int scoreOnTime;
         public Intersection[] Intersections;
         public Car[] Cars;
     }
