@@ -21,7 +21,7 @@ namespace Hashcode_2021_Qualifier
         {
             IDataSource dataGetter = new FileImporter();
 
-            IProblemSolver problemSolver = new randomScheduler();
+            IProblemSolver problemSolver = new noOfCars();
 
             foreach (var file in files)
             {
