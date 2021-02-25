@@ -43,7 +43,7 @@ namespace Hashcode_2021_Qualifier
                 }
             }
 
-
+            return null;
         }
     }
 }

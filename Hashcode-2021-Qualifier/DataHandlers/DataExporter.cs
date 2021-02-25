@@ -23,11 +23,13 @@ namespace Hashcode_2021_Qualifier
         {
             List<string> answerLines = new List<string>();
 
-            answerLines.Add("" + solution.intersections.Count);
+
+
+            int intersectionsAdded = 0;
 
             foreach (var inter in solution.intersections)
             {
-                answerLines.Add("" + inter.ID);
+               
 
 
                 List<int> IncludedIntersections = new List<int>();
@@ -39,14 +41,23 @@ namespace Hashcode_2021_Qualifier
                         IncludedIntersections.Add(i);
                     }
                 }
-
-                answerLines.Add("" + IncludedIntersections.Count);
-                for (int i = 0; i < IncludedIntersections.Count; i++)
+                if(IncludedIntersections.Count > 0)
                 {
-                    int streetIndex = IncludedIntersections[i];
-                    answerLines.Add("" + inter.Streets[streetIndex].streetName + " " + inter.schedule[streetIndex]);
+                    intersectionsAdded++;
+
+                    answerLines.Add("" + inter.ID);
+                    answerLines.Add("" + IncludedIntersections.Count);
+                    for (int i = 0; i < IncludedIntersections.Count; i++)
+                    {
+                        int streetIndex = IncludedIntersections[i];
+                        answerLines.Add("" + inter.Streets[streetIndex].streetName + " " + inter.schedule[streetIndex]);
+                    }
                 }
             }
+
+            answerLines.Insert(0,"" + intersectionsAdded);
+
+
             return answerLines;
         }
         
