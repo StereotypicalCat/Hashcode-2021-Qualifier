@@ -1,7 +1,9 @@
-﻿namespace Hashcode_2021_Qualifier
+﻿using Hashcode_2021_Qualifier.DataObjects;
+
+namespace Hashcode_2021_Qualifier
 {
     public interface IProblemSolver
     {
-        public int solve(SimulationData input);
+        public Schedule solve(SimulationData input);
     }
 }
