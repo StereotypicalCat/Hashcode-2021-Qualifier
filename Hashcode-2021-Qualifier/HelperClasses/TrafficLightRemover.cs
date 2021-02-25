@@ -13,11 +13,16 @@ namespace Hashcode_2021_Qualifier.HelperClasses
         {
             SimulationData data = new SimulationData();
 
+
+            List<Street> newStreets = oldData.Intersections.SelectMany(x => x.Streets).ToList();
+
+
             List<Intersection> newIntersections = new List<Intersection>();
 
             newIntersections = oldData.Intersections.ToList();
 
-            List<Intersection> AllFound = new List<Intersection>();
+            List<Street> AllFound = new List<Street>();
+
 
             foreach (Car oldDataCar in oldData.Cars)
             {
@@ -27,7 +32,12 @@ namespace Hashcode_2021_Qualifier.HelperClasses
                 {
                     foreach (var street in tempCar.Path)
                     {
-                        var foundInter = newIntersections.FindAll(x => x.Streets.Contains(street));
+                        var foundInter = newStreets.FindAll(x => x == street);
+
+                        foreach (var str in foundInter)
+                        {
+                            newStreets.Remove(str);
+                        }
 
                         AllFound.AddRange(foundInter);
                     }
@@ -36,12 +46,12 @@ namespace Hashcode_2021_Qualifier.HelperClasses
 
             var foundLight = AllFound.Distinct().ToList();
 
-            foreach (var intersection in foundLight)
+            foreach (var street in foundLight)
             {
-                intersection.enabled = true;
+                street.End.enabled = false;
             }
 
-            oldData.Intersections = newIntersections.ToArray();
+//            oldData.Intersections = newIntersections.ToArray();
 
             return oldData;
         }
