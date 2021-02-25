@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -24,22 +25,24 @@ namespace Hashcode_2021_Qualifier
             
             var metadata = data[0].Split(' ');
 
-            simData.simulationLength = Int32.Parse(metadata[1]);
-            var noOfIntersections = Int32.Parse(metadata[2]);
+            simData.simulationLength = Int32.Parse(metadata[0]);
+            var noOfStreets = Int32.Parse(metadata[2]);
             var noOfCars = Int32.Parse(metadata[3]);
             var pointsOnTime = Int32.Parse(metadata[4]);
 
             simData.scoreOnTime =  pointsOnTime;
 
-            simData.Intersections = new Intersection[noOfIntersections];
-            for (int i = 0; i < noOfIntersections; i++)
+            simData.Intersections = new Intersection[Int32.Parse(metadata[1])];
+            for (int i = 0; i < Int32.Parse(metadata[1]); i++)
             {
-                simData.Intersections[i] = new Intersection();
+                simData.Intersections[i] = new Intersection(new List<Street>());
             }
+
+            simData.Cars = new Car[noOfCars];
             
             for (int i = 1; i < data.Length; i++)
             {
-                if (i <= (noOfIntersections + 1))
+                if (i <= (noOfStreets))
                 {
                     var street = new Street();
 
@@ -66,18 +69,18 @@ namespace Hashcode_2021_Qualifier
                     var pathLength = Int32.Parse(carData[0]);
 
                     car.Path = new Street[pathLength];
-
-                    bool hasFoundPath = false;
                     
-                    for (int j = 1; j <= pathLength; j++)
+                    for (int j = 0; j < pathLength; j++)
                     {
+                        bool hasFoundPath = false;
+
                         foreach (var intersection in simData.Intersections)
                         {
                             foreach (var street in intersection.Streets)
                             {
-                                if (street.streetName == carData[j - 1])
+                                if (street.streetName == carData[j+1])
                                 {
-                                    car.Path[j - 1] = street;
+                                    car.Path[j] = street;
                                     hasFoundPath = true;
                                     break;
                                 }
@@ -90,6 +93,9 @@ namespace Hashcode_2021_Qualifier
                         }
 
                     }
+
+                    simData.Cars[i - 1 - noOfStreets] = car;
+
                 }
             }
 

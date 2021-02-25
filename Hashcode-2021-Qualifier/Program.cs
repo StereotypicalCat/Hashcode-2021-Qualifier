@@ -7,13 +7,11 @@ namespace Hashcode_2021_Qualifier
     {
         static void Main(string[] args)
         {
-
-            IDataSource dataGetter = new MockData();
+            IDataSource dataGetter = new FileImporter();
 
             IProblemSolver problemSolver = new BruteForce();
 
             var data = dataGetter.GetData();
-            
             
             Schedule answer = problemSolver.solve(data);
             
