@@ -9,7 +9,6 @@ namespace Hashcode_2021_Qualifier
 
             IDataSource dataGetter = new MockData();
 
-
             IProblemSolver problemSolver = new BruteForce();
 
             var data = dataGetter.GetData();
