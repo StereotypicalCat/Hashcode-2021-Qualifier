@@ -5,17 +5,14 @@ namespace Hashcode_2021_Qualifier
     public class Intersection
     {
         public int ID { get; set; }
-        
-        public List<Street> Streets { get; set; }
+
+        public List<Street> Streets { get; set; } = new List<Street>();
 
         public int[] schedule;
 
-
-        public Intersection(List<Street> streets)
+        public void initializeSchedule(int length)
         {
-            Streets = streets;
-
-            //schedule = new int[streets.Length];
+            schedule = new int[length];
         }
     }
 }

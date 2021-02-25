@@ -9,13 +9,13 @@ namespace Hashcode_2021_Qualifier
         {
             IDataSource dataGetter = new FileImporter();
 
-            IProblemSolver problemSolver = new BruteForce();
+            IProblemSolver problemSolver = new randomScheduler();
 
             var data = dataGetter.GetData();
             
             Schedule answer = problemSolver.solve(data);
             
-            //DataExporter.exportSolution(answer);
+            DataExporter.exportSolution(answer);
 
         }
     }
