@@ -10,5 +10,7 @@ namespace Hashcode_2021_Qualifier
         public int Length;
 
         public String streetName;
+
+        public bool enabled = false;
     }
 }

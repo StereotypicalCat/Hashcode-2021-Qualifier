@@ -48,7 +48,8 @@ namespace Hashcode_2021_Qualifier.HelperClasses
 
             foreach (var street in foundLight)
             {
-                street.End.enabled = false;
+                street.End.enabled = true;
+                street.enabled = true;
             }
 
 //            oldData.Intersections = newIntersections.ToArray();
