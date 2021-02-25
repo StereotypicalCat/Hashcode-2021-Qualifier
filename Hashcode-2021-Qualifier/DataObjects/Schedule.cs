@@ -8,8 +8,6 @@ namespace Hashcode_2021_Qualifier.DataObjects
 {
     public class Schedule
     {
-        private List<Intersection> intersections = new List<Intersection>();
-
-
+        public List<Intersection> intersections = new List<Intersection>();
     }
 }
